@@ -32,7 +32,7 @@ class _MyButtonState extends State<MyButton> {
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(
             isFirstClick
-                ? Colors.red
+                ? Colors.white
                 : Colors.blue, // Change color on first click
           ),
         ),

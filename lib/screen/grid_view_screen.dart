@@ -10,8 +10,10 @@ class GridViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey,
       appBar: AppBar(
         title: const Text('Grid View'),
+        centerTitle: true,
       ),
       body: GridView.count(
         padding: const EdgeInsets.all(20),
