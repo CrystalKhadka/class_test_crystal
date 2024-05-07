@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../common/my_button.dart';
 
-class GridViewScreen extends StatelessWidget {
-  final String name = "Crystal";
+class GridViewScreen extends StatefulWidget {
+  const GridViewScreen({super.key});
 
-  const GridViewScreen({super.key}); // Your name
+  @override
+  _GridViewScreenState createState() => _GridViewScreenState();
+}
+
+class _GridViewScreenState extends State<GridViewScreen> {
+  List<String> buttonNames = ['C', 'R', 'Y', 'S', 'T', 'A', 'L'];
+  List<bool> firstClickList = List.generate(7, (index) => true);
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +25,22 @@ class GridViewScreen extends StatelessWidget {
         padding: const EdgeInsets.all(20),
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        crossAxisCount: 2,
-        children: List.generate(name.length, (index) {
+        crossAxisCount: 4,
+        children: List.generate(buttonNames.length, (index) {
           return MyButton(
-            text: name[index],
+            list: buttonNames,
+            index: index,
+            onPressed: () {
+              setState(() {
+                if (firstClickList[index]) {
+                  firstClickList[index] = false;
+                } else {
+                  firstClickList.removeAt(index);
+                  buttonNames.removeAt(index);
+                }
+              });
+            },
+            firstClick: firstClickList[index],
           );
         }),
       ),
